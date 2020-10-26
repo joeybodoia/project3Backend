@@ -15,7 +15,6 @@ const cors = require("cors")
 
 //OTHER IMPORTS
 const morgan = require("morgan");
-const gearController = require("./controllers/gear.js")
 
 
 // MIDDLEWARE
@@ -25,8 +24,11 @@ app.use(express.json());
 app.use(morgan("tiny")); //logging
 
 
-
+// CONTROLLERS
+const gearController = require("./controllers/gear.js")
+const codegamesController = require("./controllers/codegames.js")
 app.use("/gear", gearController)
+app.use("/codegames", codegamesController)
 
 
 //Route for testing server is working
