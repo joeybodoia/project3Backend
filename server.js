@@ -1,32 +1,30 @@
+require("dotenv").config();
+const { PORT = 3008, NODE_ENV = "development" } = process.env;
+
 const express = require('express')
 const app = express()
-const PORT = 3008
-
-const mongoose = require('mongoose')
-const cors = require("cors")
-
-// Mongoose connections
-// Error / Disconnection
-mongoose.connection.on('error', err => console.log(err.message + ' is Mongod not running?'))
-mongoose.connection.on('disconnected', () => console.log('mongo disconnected'))
 
 
-mongoose.connect('mongodb+srv://joeybodoia:a1b2c3d4@sei.44xol.azure.mongodb.net/project3-codingPrep?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
-mongoose.connection.once('open', ()=>{
-    console.log('connected to mongoose...')
-})
+// MONGO Connection
+const mongoose = require('./DB/conn')
 
-// MIDDLEWARE
-app.use(express.json()); //use .json(), not .urlencoded()
 
 // CORS
-app.use(cors()) // Note: all routes are now exposed. If you want to limit access for specific verbs like POST or DELETE you can look at the npm documentaion for cors (for example with OMDB - it's ok for anyone to see the movies, but you don't want just anyone adding a movie)
+const cors = require("cors")
+// const corsOptions = require("./configs/cors.js");
 
-
-
-// CONTROLLERS
+//OTHER IMPORTS
+const morgan = require("morgan");
 const gearController = require("./controllers/gear.js")
-const gear = require('./models/gear.js')
+
+
+// MIDDLEWARE
+NODE_ENV === "production" ? app.use(cors()) : app.use(cors());
+app.use(cors())
+app.use(express.json());
+app.use(morgan("tiny")); //logging
+
+
 
 app.use("/gear", gearController)
 
