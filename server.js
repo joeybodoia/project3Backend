@@ -28,9 +28,12 @@ app.use(morgan("tiny")); //logging
 const gearController = require("./controllers/gear.js")
 const codegamesController = require("./controllers/codegames.js")
 const cheatsheetController = require("./controllers/cheatsheet.js")
+const interviewController = require("./controllers/interview")
 app.use("/gear", gearController)
+app.use("/interviewprep", interviewController)
 app.use("/codegames", codegamesController)
 app.use("/cheatsheet", cheatsheetController)
+
 
 
 //Route for testing server is working
