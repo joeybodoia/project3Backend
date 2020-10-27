@@ -3,7 +3,7 @@ const gear = express.Router()
 const Gear = require("../models/gear.js")
 
 
-// INDEX
+// INDEX for Gear
 
 gear.get("/", (req,res)=>{
     Gear.find({},(err,foundGear)=>{

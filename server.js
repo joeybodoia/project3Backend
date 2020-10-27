@@ -16,6 +16,7 @@ const cors = require("cors")
 //OTHER IMPORTS
 const morgan = require("morgan");
 const gearController = require("./controllers/gear.js")
+const interviewController = require("./controllers/interview")
 
 
 // MIDDLEWARE
@@ -27,6 +28,7 @@ app.use(morgan("tiny")); //logging
 
 
 app.use("/gear", gearController)
+app.use("/interviewprep", interviewController)
 
 
 //Route for testing server is working
