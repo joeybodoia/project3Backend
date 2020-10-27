@@ -29,10 +29,12 @@ const gearController = require("./controllers/gear.js")
 const codegamesController = require("./controllers/codegames.js")
 const cheatsheetController = require("./controllers/cheatsheet.js")
 const videoController = require("./controllers/videos.js")
+const interviewController = require("./controllers/interview")
 app.use("/gear", gearController)
 app.use("/codegames", codegamesController)
 app.use("/cheatsheet", cheatsheetController)
 app.use("/video", videoController)
+app.use("/interviewprep", interviewController)
 
 
 //Route for testing server is working
