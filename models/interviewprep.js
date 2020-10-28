@@ -6,7 +6,7 @@ const intPrepSchema = mongoose.Schema({
     description: String,
     language: {type: String, required: true},
     url: String,
-    img: {type: Image, required: true}
+    img: {type: String, required: true}
 })
 
 module.exports = mongoose.model('Prep', intPrepSchema)
