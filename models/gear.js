@@ -5,7 +5,8 @@ const gearSchema = mongoose.Schema({
     price: {type: String, required: true},
     description: String,
     review: String,
-    url: String
+    url: String,
+    img: String
 })
 
 module.exports = mongoose.model('Gear', gearSchema)
